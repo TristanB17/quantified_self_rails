@@ -5,7 +5,10 @@ require_relative 'config/application'
 
 Rails.application.load_tasks
 
-# task :deploy do
-#   sh "git push origin master"
-#   sh "heroku run rake db:migrate"
-# end
+task :deploy do
+  sh "git push origin master"
+  sh "heroku run rake db:migrate"
+  sh "git push heroku master"
+end
+
+task :default => [:deploy]

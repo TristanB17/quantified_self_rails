@@ -5,19 +5,35 @@ class Api::V1::FoodsController < ApiBaseController
   end
 
   def show
-    check_food_id(params[:id])
+    safe_search(404) do
+      id = params[:id]
+      food = Food.find(id)
+      render json: food, serializer: FoodSerializer
+    end
   end
 
   def create
-    create_food(food_attributes)
+    safe_search(400) do
+      food = Food.create!(name: food_attributes['name'], calories: food_attributes['calories'])
+      render json: food, serializer: FoodSerializer
+    end
   end
 
   def update
-    update_food(params[:id], food_attributes)
+    safe_search(400) do
+      id = params[:id]
+      food = Food.find(id)
+      food.update!(food_attributes)
+      render json: food, serializer: FoodSerializer
+    end
   end
 
   def destroy
-    destroy_food(params[:id])
+    safe_search(404) do
+      id = params[:id]
+      Food.find(id).destroy
+      render status: 204
+    end
   end
 
   private

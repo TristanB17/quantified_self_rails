@@ -7,8 +7,9 @@ Rails.application.load_tasks
 
 task :deploy do
   sh "git push origin master"
-  sh "heroku run rake db:migrate"
   sh "git push heroku master"
+  sh "heroku pg:reset"
+  sh "heroku run rake db:migrate"
 end
 
 task :default => [:deploy]

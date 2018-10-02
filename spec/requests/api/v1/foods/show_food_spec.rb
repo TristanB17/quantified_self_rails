@@ -20,7 +20,7 @@ describe 'a user visits food show page' do
       get "/api/v1/foods/16"
 
       expect(response).to_not be_successful
-      expect(response.status).to eq(400)
+      expect(response.status).to eq(404)
     end
   end
 end

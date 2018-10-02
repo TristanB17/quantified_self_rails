@@ -9,6 +9,19 @@ class Api::V1::FoodsController < ApiBaseController
   end
 
   def create
-    create_food(params['food'])
+    create_food(food_attributes)
+  end
+
+  def update
+    update_food(params[:id], food_attributes)
+  end
+
+  def destroy
+    destroy_food(params[:id])
+  end
+
+  private
+  def food_attributes
+    params.require(:food).permit(:name, :calories)
   end
 end

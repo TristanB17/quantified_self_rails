@@ -16,11 +16,11 @@ describe 'a user visits food show page' do
       expect(food[:name]).to eq('linguine')
       expect(food[:calories]).to eq(290)
     end
-    it 'returns a 404 if food not found in the database' do
+    it 'returns a 400 if food not found in the database' do
       get "/api/v1/foods/16"
 
       expect(response).to_not be_successful
-      expect(response.status).to eq(404)
+      expect(response.status).to eq(400)
     end
   end
 end

@@ -6,8 +6,7 @@ class Api::V1::FoodsController < ApiBaseController
 
   def show
     safe_search(404) do
-      id = params[:id]
-      food = Food.find(id)
+      food = Food.find(params[:id])
       render json: food, serializer: FoodSerializer
     end
   end

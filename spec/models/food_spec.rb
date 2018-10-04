@@ -30,10 +30,10 @@ describe Food, type: :model do
       meal_4.food_meals.create(food_id: 4)
 
       favorites = Food.get_favorites
-
-      expect(favorites).to be_an(Array)
-      expect(favorites.length).to eq(2)
-      expect(favorites[0]['timesEaten']).to eq(4)
+      
+      expect(favorites.length).to eq(4)
+      expect(favorites.first.name).to eq('fettuccine')
+      expect(favorites[0].times_eaten).to eq(4)
     end
   end
 end

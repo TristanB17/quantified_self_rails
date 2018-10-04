@@ -1,16 +1,8 @@
 require 'rails_helper'
 
-describe Food, type: :model do
-  context 'validations' do
-    it {should validate_presence_of(:name)}
-    it {should validate_presence_of(:calories)}
-  end
-  context 'relationships' do
-    it {should have_many(:food_meals)}
-    it {should have_many(:meals).through(:food_meals)}
-  end
-  context 'class methods' do
-    it 'can return the top three favorite foods by quantity' do
+describe 'a user visits their favorite foods' do
+  context 'post /api/v1/favorite_foods' do
+    it 'sees top three eaten foods' do
       food_1 = create(:food)
       food_2 = create(:food_2)
       food_3 = create(:food_3)
@@ -29,11 +21,17 @@ describe Food, type: :model do
       meal_4.food_meals.create(food_id: 3)
       meal_4.food_meals.create(food_id: 4)
 
-      favorites = Food.get_favorites
+      get "/api/v1/favorite_foods"
 
-      expect(favorites).to be_an(Array)
-      expect(favorites.length).to eq(2)
-      expect(favorites[0]['timesEaten']).to eq(4)
+      expect(response).to be_successful
+      expect(response.status).to eq(200)
+      new_food = JSON.parse(response.body, symbolize_names: true)
+      first_food = new_food.first[:food].first
+    
+      expect(first_food[:name]).to eq('fettuccine')
+      expect(first_food[:calories]).to eq(450)
+      expect(first_food[:mealsWhenEaten].count).to eq(4)
+      expect(first_food[:mealsWhenEaten].first).to eq('Second Breakfast')
     end
   end
 end

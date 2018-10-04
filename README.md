@@ -1,24 +1,23 @@
-# README
+# Quantified Self - Rails
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+* The goal of this project was to build a backend API able to reach various endpoints and conduct some minor analysis. 
 
-Things you may want to cover:
+* The Travis CI is used to ensure all unit tests pass prior to merging a branch to master.
 
-* Ruby version
+* Link to Heroku: https://quantified-self-1804-tristan.herokuapp.com/api/v1/foods
 
-* System dependencies
+* Instructions for Local Setup
+  - run the following commands in the folder you wish to house the project in
 
-* Configuration
+```git clone https://github.com/TristanB17/quantified_self_rails.git```
+  -  clones down the repository to your local machine
+```bundle```
+  - ensures full gem functionality
+```rake db:{create,migrate,seed}```
+  - fills database with seed data
 
-* Database creation
+* Testing 
 
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+  - all tests can be run by typing the command below, assuming the previous commands required for intitial setup have all been completed without error.
+  ```rspec```
+  

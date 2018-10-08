@@ -9,7 +9,7 @@ class Food < ApplicationRecord
   end
 
   def self.group_favorites
-    Food.get_favorites.group_by { |food| food.times_eaten }
+    Food.get_favorites.group_by { |food| food.times_eaten }.except!(1)
   end
 
   def self.get_favorites

@@ -1,14 +1,14 @@
 class Api::V1::FoodMealsController < ApiBaseController
 
   def index
-    safe_search_meal(404) do
+    safe_search(404) do
       meal = Meal.find_by_id(params[:meal_id])
       render json: meal, serializer: MealSerializer
     end
   end
 
   def create
-    safe_search_meal(404) do
+    safe_search(404) do
       meal = Meal.find_by_id(params[:meal_id])
       food = Food.find_by_id(params[:id])
       render json: { message: "Successfully added #{food.name} to #{meal.name}" }, status: 201

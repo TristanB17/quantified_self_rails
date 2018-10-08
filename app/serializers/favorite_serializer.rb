@@ -6,6 +6,6 @@ class FavoriteSerializer < ActiveModel::Serializer
   end
 
   def food
-    object[1].map {|food| FavoriteFoodSerializer.new(food)}
+    object[1].map { |food| FavoriteFoodSerializer.new(food) }
   end
 end

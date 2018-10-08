@@ -1,4 +1,6 @@
 # Quantified Self - Rails
+[![Build Status](https://travis-ci.com/TristanB17/quantified_self_rails.svg?branch=master)](https://travis-ci.com/TristanB17/quantified_self_rails)
+[![Coverage Status](https://coveralls.io/repos/github/TristanB17/quantified_self_rails/badge.svg?branch=master)](https://coveralls.io/github/TristanB17/quantified_self_rails?branch=master)
 
 * The goal of this project was to build a backend API able to reach various endpoints and conduct some minor analysis. 
 

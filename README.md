@@ -177,7 +177,6 @@ rails server
     "message": "Successfully removed FOODNAME to MEALNAME"
 }
 ```
-</br>
 #### Favorite Foods
 * GET /api/v1/favorite_foods
   * Retrieves data on the foods which were eaten most frequently. 

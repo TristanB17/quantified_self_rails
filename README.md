@@ -23,7 +23,6 @@
   ```rspec```<br/>
   
 * Travis CI 
-[![Build Status](https://travis-ci.com/TristanB17/quantified_self_rails.svg?branch=master)](https://travis-ci.com/TristanB17/quantified_self_rails)
 
 * Primary Endpoints
 

@@ -10,6 +10,7 @@ task :deploy do
   sh "git push heroku master"
   sh "heroku pg:reset"
   sh "heroku run rake db:migrate"
+  sh "heroku run rake db:seed"
 end
 
 task :default => [:deploy]

@@ -5,7 +5,7 @@ meal_4 = Meal.create(name: 'Preworkout')
 meal_5 = Meal.create(name: 'Cookie Party')
 
 food_1  = Food.create(name: 'Pancakes', calories: 670)
-food_2  = Food.create(name: 'Waffels', calories: 4)
+food_2  = Food.create(name: 'Waffles', calories: 4)
 food_3  = Food.create(name: 'French Toast', calories: 650)
 food_4  = Food.create(name: 'Oatmeal', calories: 230)
 food_5  = Food.create(name: 'Special K Red Berry with Almond Milk', calories: 130)

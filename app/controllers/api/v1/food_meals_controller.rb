@@ -1,5 +1,4 @@
 class Api::V1::FoodMealsController < ApiBaseController
-
   def index
     safe_search(404) do
       render json: meal, serializer: MealSerializer
@@ -17,7 +16,7 @@ class Api::V1::FoodMealsController < ApiBaseController
       food_meal[:food_meal].destroy
       render json: { message: food_meal[:message] }
     else
-      render json: { message: "Invalid, food or meal not found" }, status: 404
+      render json: { message: 'Invalid, food or meal not found' }, status: 404
     end
   end
 

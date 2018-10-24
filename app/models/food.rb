@@ -14,8 +14,8 @@ class Food < ApplicationRecord
 
   def self.get_favorites
     select('foods.*, count(food_meals.food_id) AS times_eaten')
-    .joins(:food_meals)
-    .group('id', 'food_meals.food_id')
-    .order('times_eaten DESC')
+      .joins(:food_meals)
+      .group('id', 'food_meals.food_id')
+      .order('times_eaten DESC')
   end
 end

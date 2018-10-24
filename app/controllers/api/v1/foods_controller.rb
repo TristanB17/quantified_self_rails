@@ -1,5 +1,4 @@
 class Api::V1::FoodsController < ApiBaseController
-
   def index
     render json: Food.all, each_serializer: FoodSerializer
   end
@@ -18,7 +17,7 @@ class Api::V1::FoodsController < ApiBaseController
 
   def update
     safe_search(400) do
-      food.update!(food_attributes)
+      food.update(food_attributes)
       render json: food, serializer: FoodSerializer
     end
   end

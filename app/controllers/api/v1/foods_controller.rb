@@ -6,22 +6,18 @@ class Api::V1::FoodsController < ApiBaseController
 
   def show
     safe_search(404) do
-      food = Food.find(params[:id])
       render json: food, serializer: FoodSerializer
     end
   end
 
   def create
     safe_search(400) do
-      food = Food.create!(name: food_attributes['name'], calories: food_attributes['calories'])
-      render json: food, serializer: FoodSerializer
+      render json: create_food, serializer: FoodSerializer
     end
   end
 
   def update
     safe_search(400) do
-      id = params[:id]
-      food = Food.find(id)
       food.update!(food_attributes)
       render json: food, serializer: FoodSerializer
     end
@@ -29,14 +25,26 @@ class Api::V1::FoodsController < ApiBaseController
 
   def destroy
     safe_search(404) do
-      id = params[:id]
-      Food.find(id).destroy
+      food.destroy
       render status: 204
     end
   end
 
   private
+
   def food_attributes
     params.require(:food).permit(:name, :calories)
+  end
+
+  def id
+    @id ||= params[:id]
+  end
+
+  def food
+    @food ||= Food.find(id)
+  end
+
+  def create_food
+    @new_food ||= Food.create!(name: food_attributes['name'], calories: food_attributes['calories'])
   end
 end

@@ -1,5 +1,5 @@
 class Api::V1::MealsController < ApiBaseController
   def index
-    render json: Meal.all, each_serializer: MealSerializer
+    render json: Meal.includes(:foods).all, each_serializer: MealSerializer
   end
 end

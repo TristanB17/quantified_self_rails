@@ -35,6 +35,6 @@ class Api::V1::FoodMealsController < ApiBaseController
   end
 
   def food_meal
-    @food_meal ||= food_meal = FoodMeal.determine_relation(food_meal_params[:id], food_meal_params[:meal_id])
+    @food_meal ||= FoodMeal.determine_relation(food_meal_params[:id], food_meal_params[:meal_id])
   end
 end

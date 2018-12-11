@@ -3,7 +3,7 @@ class ApiBaseController < ActionController::API
     begin
       yield
     rescue => error
-      render json: {error: error.message}, status: status_code
+      render json: { error: error.message }, status: status_code
     end
   end
 end

@@ -5,14 +5,14 @@ class Food < ApplicationRecord
   has_many :meals, through: :food_meals
 
   def self.sort_favorites
-    Food.group_favorites.sort_by { |food| food }.reverse.take(3)
+    Food.group_favorites.sort.reverse.take(3)
   end
 
   def self.group_favorites
-    Food.get_favorites.group_by { |food| food.times_eaten }.except!(1)
+    Food.favorites.group_by(&:times_eaten).except!(1)
   end
 
-  def self.get_favorites
+  def self.favorites
     select('foods.*, count(food_meals.food_id) AS times_eaten')
       .joins(:food_meals)
       .group('id', 'food_meals.food_id')
